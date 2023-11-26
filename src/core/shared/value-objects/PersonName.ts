@@ -1,4 +1,3 @@
-import Errors from '@/core/constants/Errors';
 import Notification from '@/core/utils/Notification';
 
 export default class PersonName {
@@ -7,6 +6,10 @@ export default class PersonName {
   constructor(name: string) {
     this.name = name.trim();
 
-    Notification.isEmpty(this.name, Errors.EMPTY_NAME);
+    const errors = Notification.notifications(
+      Notification.isEmpty(this.name)
+    );
+
+    if (errors) throw new Error(errors.join(','));
   }
 }
