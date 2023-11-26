@@ -31,6 +31,18 @@ export default class Notification {
 
   static isLessThan(
     value: string | any[],
+    minLength: number,
+    errorKey: ErrorKey = 'minLength'
+  ): string | null {
+    const errorMessage = errorMessages[errorKey].replace(
+      '{0}',
+      minLength.toString()
+    );
+    return value.length < minLength ? errorMessage : null;
+  }
+
+  static isMoreThan(
+    value: string | any[],
     maxLength: number,
     errorKey: ErrorKey = 'maxLength'
   ): string | null {
@@ -38,7 +50,7 @@ export default class Notification {
       '{0}',
       maxLength.toString()
     );
-    return value.length < maxLength ? null : errorMessage;
+    return value.length > maxLength ? errorMessage : null;
   }
 
   static isValidEmail(

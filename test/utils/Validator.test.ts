@@ -40,16 +40,34 @@ describe('Notification', () => {
     expect(error).toBe('O campo não pode estar vazio.');
   });
 
-  it('should return null if value length is less than max length', () => {
-    const error = Notification.isLessThan('value', 6);
+  it('should return an error if value length is less than min length', () => {
+    const minLength = 6;
+    const error = Notification.isLessThan('value', minLength);
+    expect(error).not.toBeNull();
+    expect(error).toBe(
+      `O comprimento mínimo é ${minLength} caracteres.`
+    );
+  });
+
+  it('should return null if value length is more than min length', () => {
+    const minLength = 6;
+    const error = Notification.isLessThan('value more', minLength);
     expect(error).toBeNull();
   });
 
-  it('should return an error message if value length is more than max length', () => {
+  it('should return error if value length is more than max length', () => {
     const maxLength = 6;
-    const error = Notification.isLessThan('value more', maxLength);
+    const error = Notification.isMoreThan('value more', maxLength);
     expect(error).not.toBeNull();
-    expect(error).toBe(`O comprimento máximo é ${maxLength} caracteres.`);
+    expect(error).toBe(
+      `O comprimento máximo é ${maxLength} caracteres.`
+    );
+  });
+
+  it('should return null if value length is not more than max length', () => {
+    const maxLength = 6;
+    const error = Notification.isMoreThan('value', maxLength);
+    expect(error).toBeNull();
   });
 
   it('should return null if email is valid', () => {
