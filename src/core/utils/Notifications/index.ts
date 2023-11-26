@@ -1,5 +1,5 @@
-import { ErrorKey } from './Notifications/types/ErrorKey';
-import { errorMessages } from './Notifications/constants/error-messages';
+import { ErrorKey } from './types/ErrorKey';
+import { errorMessages } from './constants/error-messages';
 
 export default class Notification {
   static notifications(

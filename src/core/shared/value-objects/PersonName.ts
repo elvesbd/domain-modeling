@@ -1,4 +1,4 @@
-import Notification from '@/core/utils/Notification';
+import Notification from '@/core/utils/Notifications';
 
 export default class PersonName {
   readonly name: string;

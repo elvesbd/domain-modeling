@@ -1,4 +1,4 @@
-import Notification from '@/core/utils/Notification';
+import Notification from '@/core/utils/Notifications';
 
 describe('Notification', () => {
   it('should return an errors list if at least one validation error exists', () => {
