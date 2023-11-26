@@ -1,36 +1,67 @@
-import Validator from '@/core/utils/Validator';
+import Notification from '@/core/utils/Notification';
 
-describe('Validator', () => {
-  it('should be return null if text not null', () => {
-    const error = Validator.isNotNull('Good morning', 'error');
+describe('Notification', () => {
+  it('should return an errors list if at least one validation error exists', () => {
+    const errors = Notification.notifications(
+      Notification.isEmpty(' '),
+      Notification.isEmpty('value')
+    );
+    expect(errors?.join(', ')).toBe('O campo não pode estar vazio.');
+    expect(errors?.length).toBe(1);
+  });
+
+  it('should return null if there are no validation errors', () => {
+    const errors = Notification.notifications(
+      Notification.isEmpty('value'),
+      Notification.isEmpty('value')
+    );
+    expect(errors).toBeNull();
+  });
+
+  it('should return null if value is not null', () => {
+    const error = Notification.isNull('value');
     expect(error).toBeNull();
   });
 
-  it('should be return error if text is null', () => {
-    const error = Validator.isNotNull(null, 'error');
+  it('should return an error message if value is null', () => {
+    const error = Notification.isNull(null);
     expect(error).not.toBeNull();
-    expect(error).toBe('error');
+    expect(error).toBe('O campo é obrigatório.');
   });
 
-  it('should be return null if text is not empty', () => {
-    const error = Validator.isNotEmpty('Good morning', 'error');
+  it('should return null if text is not empty', () => {
+    const error = Notification.isEmpty('value');
     expect(error).toBeNull();
   });
 
-  it('should be return error if text is empty', () => {
-    const error = Validator.isNotEmpty('     ', 'error');
+  it('should return an error message if text is empty', () => {
+    const error = Notification.isEmpty(' ');
     expect(error).not.toBeNull();
-    expect(error).toBe('error');
+    expect(error).toBe('O campo não pode estar vazio.');
   });
 
-  it('should be return null if text less than max length', () => {
-    const error = Validator.isLessThan('test', 6, 'error');
+  it('should return null if value length is less than max length', () => {
+    const error = Notification.isLessThan('value', 6);
     expect(error).toBeNull();
   });
 
-  it('should be return error if text more than max length', () => {
-    const error = Validator.isLessThan('test error', 6, 'error');
+  it('should return an error message if value length is more than max length', () => {
+    const maxLength = 6;
+    const error = Notification.isLessThan('value more', maxLength);
     expect(error).not.toBeNull();
-    expect(error).toBe('error');
+    expect(error).toBe(`O comprimento máximo é ${maxLength} caracteres.`);
+  });
+
+  it('should return null if email is valid', () => {
+    const validEmail = 'test@example.com';
+    const error = Notification.isValidEmail(validEmail);
+    expect(error).toBeNull();
+  });
+
+  it('should return error if email is invalid', () => {
+    const invalidEmail = 'invalid.email';
+    const error = Notification.isValidEmail(invalidEmail);
+    expect(error).not.toBeNull();
+    expect(error).toBe('O e-mail fornecido não é válido.');
   });
 });
