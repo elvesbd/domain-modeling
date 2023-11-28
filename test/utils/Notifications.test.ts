@@ -18,6 +18,13 @@ describe('Notification', () => {
     expect(errors).toBeNull();
   });
 
+  it('should return error if value contains special characters', () => {
+    const value = '@invalid';
+    const error = Notification.isOnlyLetters(value);
+    expect(error).not.toBeNull();
+    expect(error).toBe('O campo deve conter apenas letras.');
+  });
+
   it('should return null if value is not null', () => {
     const error = Notification.isNull('value');
     expect(error).toBeNull();
@@ -66,7 +73,11 @@ describe('Notification', () => {
 
   it('should return error with custom error message if value length is more than max length', () => {
     const maxLength = 6;
-    const error = Notification.isMoreThan('value more', maxLength, 'custom error message');
+    const error = Notification.isMoreThan(
+      'value more',
+      maxLength,
+      'custom error message'
+    );
     expect(error).not.toBeNull();
     expect(error).toBe('custom error message');
   });
