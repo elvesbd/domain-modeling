@@ -64,6 +64,13 @@ describe('Notification', () => {
     );
   });
 
+  it('should return error with custom error message if value length is more than max length', () => {
+    const maxLength = 6;
+    const error = Notification.isMoreThan('value more', maxLength, 'custom error message');
+    expect(error).not.toBeNull();
+    expect(error).toBe('custom error message');
+  });
+
   it('should return null if value length is not more than max length', () => {
     const maxLength = 6;
     const error = Notification.isMoreThan('value', maxLength);

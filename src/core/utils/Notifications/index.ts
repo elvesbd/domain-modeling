@@ -44,13 +44,13 @@ export default class Notification {
   static isMoreThan(
     value: string | any[],
     maxLength: number,
-    errorKey: ErrorKey = 'maxLength'
+    customErrorMessage?: string
   ): string | null {
-    const errorMessage = errorMessages[errorKey].replace(
+    const errorMessage = customErrorMessage ?? errorMessages.maxLength.replace(
       '{0}',
       maxLength.toString()
-    );
-    return value.length > maxLength ? errorMessage : null;
+  );
+  return value.length > maxLength ? errorMessage : null;
   }
 
   static isValidEmail(
