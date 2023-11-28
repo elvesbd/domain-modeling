@@ -35,6 +35,12 @@ describe('Notification', () => {
     expect(error).toBe('custom error message');
   });
 
+  it('should return null if value not contains special characters', () => {
+    const value = 'John Doe';
+    const error = Notification.isOnlyLetters(value);
+    expect(error).toBeNull();
+  });
+
   it('should return null if value is not null', () => {
     const error = Notification.isNull('value');
     expect(error).toBeNull();
