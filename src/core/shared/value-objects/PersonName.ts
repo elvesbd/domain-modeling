@@ -15,4 +15,14 @@ export default class PersonName {
 
     if (errors) throw new Error(errors.join(','));
   }
+
+  get fullName() {
+    return this.name;
+  }
+
+  get initials() {
+    const words = this.name.split(' ');
+    const initials = words.map((word) => word[0].toUpperCase());
+    return initials.join('');
+  }
 }

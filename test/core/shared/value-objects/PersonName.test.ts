@@ -37,4 +37,9 @@ describe('Value Object - PersonName', () => {
 
     expect(execute).toThrow(expectedErrorMessage);
   });
+
+  it('should create an name on success', () => {
+    const result = new PersonName('John Doe');
+    expect(result.fullName).toBe('John Doe');
+  });
 });
