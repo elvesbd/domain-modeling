@@ -42,4 +42,9 @@ describe('Value Object - PersonName', () => {
     const result = new PersonName('John Doe');
     expect(result.fullName).toBe('John Doe');
   });
+
+  it('should return an initials name', () => {
+    const result = new PersonName('John Doe');
+    expect(result.initials).toBe('JD');
+  });
 });
