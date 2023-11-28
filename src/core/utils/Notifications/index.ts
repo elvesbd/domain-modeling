@@ -24,8 +24,6 @@ export default class Notification {
     value: string,
     errorKey: ErrorKey = 'empty'
   ): string | null {
-    if (Notification.isNull(value, 'required'))
-      return errorMessages[errorKey];
     return value.trim() === '' ? errorMessages[errorKey] : null;
   }
 
