@@ -25,6 +25,16 @@ describe('Notification', () => {
     expect(error).toBe('O campo deve conter apenas letras.');
   });
 
+  it('should return error with custom error message if value contains special characters', () => {
+    const value = '@invalid';
+    const error = Notification.isOnlyLetters(
+      value,
+      'custom error message'
+    );
+    expect(error).not.toBeNull();
+    expect(error).toBe('custom error message');
+  });
+
   it('should return null if value is not null', () => {
     const error = Notification.isNull('value');
     expect(error).toBeNull();
