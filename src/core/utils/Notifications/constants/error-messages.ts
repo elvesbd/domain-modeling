@@ -4,6 +4,5 @@ export const errorMessages = {
   maxLength: 'O comprimento máximo é {0} caracteres.',
   minLength: 'O comprimento mínimo é {0} caracteres.',
   invalidEmail: 'O e-mail fornecido não é válido.',
-  containsSpecialChars:
-    'O campo não deve conter caracteres especiais.',
+  containsOnlyLetters: 'O campo deve conter apenas letras.',
 };

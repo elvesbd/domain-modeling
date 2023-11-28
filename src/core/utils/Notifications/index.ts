@@ -11,6 +11,16 @@ export default class Notification {
     return filterErrors.length > 0 ? filterErrors : null;
   }
 
+  static isOnlyLetters(
+    value: string,
+    customErrorMessage?: string
+  ): string | null {
+    const regex = /^[a-zA-ZÀ-ú\s]+$/;
+    const errorMessage =
+      customErrorMessage ?? errorMessages.containsOnlyLetters;
+    return regex.test(value) ? null : errorMessage;
+  }
+
   static isNull(
     value: any,
     errorKey: ErrorKey = 'required'
@@ -44,11 +54,10 @@ export default class Notification {
     maxLength: number,
     customErrorMessage?: string
   ): string | null {
-    const errorMessage = customErrorMessage ?? errorMessages.maxLength.replace(
-      '{0}',
-      maxLength.toString()
-  );
-  return value.length > maxLength ? errorMessage : null;
+    const errorMessage =
+      customErrorMessage ??
+      errorMessages.maxLength.replace('{0}', maxLength.toString());
+    return value.length > maxLength ? errorMessage : null;
   }
 
   static isValidEmail(
