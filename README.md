@@ -26,14 +26,6 @@ O uso de Value Objects garante a imutabilidade e a validação dos dados, evitan
 
 A integridade e confiabilidade do sistema são garantidas por meio de testes unitários abrangentes. Utilizando o [Jest](https://jestjs.io/), cada componente e funcionalidade do sistema é testado individualmente, garantindo que as mudanças ou adições de código não afetem negativamente a aplicação.
 
-## Portas e Adaptadores
-
-O projeto segue o padrão de arquitetura hexagonal, onde as operações de entrada e saída são tratadas por "Portas" e "Adaptadores". Isso proporciona uma separação clara entre a lógica de negócios e a interação com o mundo externo, facilitando a substituição de componentes e a integração com outros sistemas.
-
-### Persistência de Dados com Postgres
-
-Utilizamos o banco de dados Postgres para manter a integridade dos dados relacionais.
-
 ## Passos para Execução
 
 1. **Clonar o Projeto:**
@@ -52,20 +44,12 @@ instalando as dependências do projeto:
 npm install
 ```
 
-3. **Configurar o Banco de Dados com Docker:**
+3. **Rodar os testes unitários:**
 
-Criando um banco de dados postgres com o docker:
-
-```bash
-docker run --name container-name -e POSTGRES_USER=username -e POSTGRES_PASSWORD=password -e POSTGRES_DB=database -p 5432:5432 -d postgres
-```
-
-4. **Iniciar o servidor:**
-
-Rodando o projeto:
+Rodando os teste:
 
 ```bash
-npm start
+npm test
 ```
 
 ## 🤝 Colaborador
