@@ -1,24 +1,20 @@
-import Id from '../shared/value-objects/Id';
 import Cpf from '../shared/value-objects/Cpf';
 import PersonName from '../shared/value-objects/PersonName';
+import Entity, { EntityProps } from '../shared/entities/Entity';
 
 export type PersonProps = {
-  id?: string;
   cpf: string;
   name: string;
-};
+} & EntityProps;
 
-export default class Person {
-  readonly id: Id;
+export default class Person extends Entity<PersonProps> {
   readonly cpf: Cpf;
   readonly name: PersonName;
-  readonly props: PersonProps;
 
   constructor(props: PersonProps) {
-    this.id = new Id(props.id);
+    super(props);
     this.cpf = new Cpf(props.cpf);
     this.name = new PersonName(props.name);
-    this.props = { ...props, id: this.id.value };
   }
 
   clone(props: Partial<PersonProps>) {
