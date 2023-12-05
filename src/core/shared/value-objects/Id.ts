@@ -8,4 +8,12 @@ export default class Id {
 
     if (!validate(this.value)) throw new Error('Invalid id!');
   }
+
+  isEquals(otherId: Id): boolean {
+    return this.value === otherId?.value;
+  }
+
+  isDifferent(otherId: Id): boolean {
+    return this.value !== otherId.value;
+  }
 }
