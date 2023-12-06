@@ -7,7 +7,7 @@ export type PersonProps = {
   name: string;
 } & EntityProps;
 
-export default class Person extends Entity<PersonProps> {
+export default class Person extends Entity<Person, PersonProps> {
   readonly cpf: Cpf;
   readonly name: PersonName;
 
@@ -15,9 +15,5 @@ export default class Person extends Entity<PersonProps> {
     super(props);
     this.cpf = new Cpf(props.cpf);
     this.name = new PersonName(props.name);
-  }
-
-  clone(props: Partial<PersonProps>) {
-    return new Person({ ...this.props, ...props });
   }
 }

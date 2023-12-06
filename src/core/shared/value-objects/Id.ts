@@ -14,6 +14,6 @@ export default class Id {
   }
 
   isDifferent(otherId: Id): boolean {
-    return this.value !== otherId.value;
+    return this.value !== otherId?.value;
   }
 }
