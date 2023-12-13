@@ -1,8 +1,7 @@
 import { faker } from '@faker-js/faker';
-import { generate } from 'gerador-validador-cpf';
-
-import Person, { PersonProps } from '@/core/person/Person';
 import Id from '@/core/shared/value-objects/Id';
+import { generate } from 'gerador-validador-cpf';
+import Person, { PersonProps } from '@/core/person/Person';
 
 export default class PersonBuilder {
   private constructor(private props: PersonProps) {}
