@@ -75,4 +75,12 @@ describe('Value Object - CpfRegion', () => {
 
     expect(region.states).toContain('MT');
   });
+
+  it('ensures that returns the TO region to region code 1', () => {
+    const regionCode = 1;
+    const region = CpfRegion.getByCode(regionCode);
+
+    expect(region.code).toBe(regionCode);
+    expect(region.states).toContain('TO');
+  });
 });
