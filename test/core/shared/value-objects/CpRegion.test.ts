@@ -60,4 +60,19 @@ describe('Value Object - CpfRegion', () => {
 
     expect(region.states).toContain('MS');
   });
+
+  it('ensures that returns the MT region to region code 1', () => {
+    const regionCode = 1;
+    const region = CpfRegion.getByCode(regionCode);
+
+    expect(region.code).toBe(regionCode);
+    expect(region.states).toContain('MT');
+  });
+
+  it('ensures that returns the MT region if the cpf entered belongs to region 1', () => {
+    const cpf = '345.799.511-93';
+    const region = CpfRegion.getByCpf(cpf);
+
+    expect(region.states).toContain('MT');
+  });
 });
