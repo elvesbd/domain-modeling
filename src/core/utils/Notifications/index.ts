@@ -15,7 +15,7 @@ export default class Notification {
     value: string,
     customErrorMessage?: string
   ): string | null {
-    const regex = /^[a-zA-ZÀ-ú\s]+$/; // /^[a-zA-ZÀ-ú'-\.\s]+$/
+    const regex = /^[a-zA-ZÀ-ú'-\.\s]+$/;
     const errorMessage =
       customErrorMessage ?? errorMessages.containsOnlyLetters;
     return regex.test(value) ? null : errorMessage;
