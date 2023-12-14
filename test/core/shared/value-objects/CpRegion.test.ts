@@ -91,11 +91,26 @@ describe('Value Object - CpfRegion', () => {
     expect(region.states).toContain('TO');
   });
 
-  it('ensures that returns the AC region to region code 1', () => {
+  it('ensures that returns the AC region to region code 2', () => {
     const regionCode = 2;
     const region = CpfRegion.getByCode(regionCode);
 
     expect(region.code).toBe(regionCode);
     expect(region.states).toContain('AC');
+  });
+
+  it('ensures that returns the AC region if the cpf entered belongs to region 2', () => {
+    const cpf = '345.799.512-93';
+    const region = CpfRegion.getByCpf(cpf);
+
+    expect(region.states).toContain('AC');
+  });
+
+  it('ensures that returns the AM region to region code 2', () => {
+    const regionCode = 2;
+    const region = CpfRegion.getByCode(regionCode);
+
+    expect(region.code).toBe(regionCode);
+    expect(region.states).toContain('AM');
   });
 });
