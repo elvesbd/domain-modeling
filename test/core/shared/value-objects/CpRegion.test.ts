@@ -30,4 +30,12 @@ describe('Value Object - CpfRegion', () => {
 
     expect(region.states).toContain('DF');
   });
+
+  it('ensures that returns the GO region to region code 1', () => {
+    const regionCode = 1;
+    const region = CpfRegion.getByCode(regionCode);
+
+    expect(region.code).toBe(regionCode);
+    expect(region.states).toContain('GO');
+  });
 });
