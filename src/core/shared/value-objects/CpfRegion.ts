@@ -13,7 +13,7 @@ export default class CpfRegion {
   ];
 
   private constructor(
-    readonly regionCode: number,
+    readonly code: number,
     readonly states: string[]
   ) {}
 
