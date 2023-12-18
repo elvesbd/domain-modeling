@@ -294,10 +294,10 @@ describe('Value Object - CpfRegion', () => {
     expect(region.states).toContain('BA');
   });
 
-  it('ensures that returns the RN region if the cpf entered belongs to region 4', () => {
-    const cpf = '345.799.514-93';
+  it('ensures that returns the BA region if the cpf entered belongs to region 5', () => {
+    const cpf = '345.799.515-93';
     const region = CpfRegion.getByCpf(cpf);
 
-    expect(region.states).toContain('RN');
+    expect(region.states).toContain('BA');
   });
 });
