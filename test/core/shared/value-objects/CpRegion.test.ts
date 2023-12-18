@@ -263,4 +263,11 @@ describe('Value Object - CpfRegion', () => {
     expect(region.code).toBe(regionCode);
     expect(region.states).toContain('PE');
   });
+
+  it('ensures that returns the PE region if the cpf entered belongs to region 4', () => {
+    const cpf = '345.799.514-93';
+    const region = CpfRegion.getByCpf(cpf);
+
+    expect(region.states).toContain('PE');
+  });
 });
