@@ -323,4 +323,11 @@ describe('Value Object - CpfRegion', () => {
     expect(region.code).toBe(regionCode);
     expect(region.states).toContain('MG');
   });
+
+  it('ensures that returns the MG region if the cpf entered belongs to region 6', () => {
+    const cpf = '345.799.516-93';
+    const region = CpfRegion.getByCpf(cpf);
+
+    expect(region.states).toContain('MG');
+  });
 });
