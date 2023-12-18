@@ -398,4 +398,11 @@ describe('Value Object - CpfRegion', () => {
     expect(region.code).toBe(regionCode);
     expect(region.states).toContain('SC');
   });
+
+  it('ensures that returns the SC region if the cpf entered belongs to region 9', () => {
+    const cpf = '345.799.519-93';
+    const region = CpfRegion.getByCpf(cpf);
+
+    expect(region.states).toContain('SC');
+  });
 });
