@@ -345,4 +345,12 @@ describe('Value Object - CpfRegion', () => {
 
     expect(region.states).toContain('ES');
   });
+
+  it('ensures that returns the RJ region to region code 7', () => {
+    const regionCode = 7;
+    const region = CpfRegion.getByCode(regionCode);
+
+    expect(region.code).toBe(regionCode);
+    expect(region.states).toContain('RJ');
+  });
 });
