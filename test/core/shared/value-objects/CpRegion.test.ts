@@ -360,4 +360,12 @@ describe('Value Object - CpfRegion', () => {
 
     expect(region.states).toContain('RJ');
   });
+
+  it('ensures that returns the SP region to region code 8', () => {
+    const regionCode = 8;
+    const region = CpfRegion.getByCode(regionCode);
+
+    expect(region.code).toBe(regionCode);
+    expect(region.states).toContain('SP');
+  });
 });
