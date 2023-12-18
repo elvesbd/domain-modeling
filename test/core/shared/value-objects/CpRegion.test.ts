@@ -225,4 +225,12 @@ describe('Value Object - CpfRegion', () => {
 
     expect(region.states).toContain('PI');
   });
+
+  it('ensures that returns the AL region to region code 4', () => {
+    const regionCode = 4;
+    const region = CpfRegion.getByCode(regionCode);
+
+    expect(region.code).toBe(regionCode);
+    expect(region.states).toContain('AL');
+  });
 });
